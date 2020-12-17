@@ -6,14 +6,52 @@ namespace GettingArrayElementIndex
     {
         public static int GetIndexOf(this uint[] arrayToSearch, uint value)
         {
-            // TODO #1. Analyze the implementation of "GetLastIndexOf(uint[], uint)" method to see how "for" loop works, and implement the method using the "for" loop statement.
-            throw new NotImplementedException();
+            if (arrayToSearch is null)
+            {
+                throw new ArgumentNullException(nameof(arrayToSearch));
+            }
+
+            int index = -1;
+            for (int i = 0; i < arrayToSearch.Length; i++)
+            {
+                if (arrayToSearch[i] == value)
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            return index;
         }
 
         public static int GetIndexOf(this uint[] arrayToSearch, uint value, int startIndex, int count)
         {
-            // TODO #2. Analyze the implementation of "GetLastIndexOf(uint[], uint, int, int)" method to see how "for" loop works, and implement the method using the "for" loop statement.
-            throw new NotImplementedException();
+            if (arrayToSearch is null)
+            {
+                throw new ArgumentNullException(nameof(arrayToSearch));
+            }
+
+            if (startIndex > arrayToSearch.Length || startIndex < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(startIndex));
+            }
+
+            if (count < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(count));
+            }
+
+            int index = -1;
+            for (int i = startIndex; i < startIndex + count; i++)
+            {
+                if (arrayToSearch[i] == value)
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            return index;
         }
 
         public static int GetLastIndexOf(this uint[] arrayToSearch, uint value)
